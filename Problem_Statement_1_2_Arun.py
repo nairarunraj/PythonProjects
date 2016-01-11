@@ -11,6 +11,8 @@ Input -
 '''
 from itertools import product
 import sys
+import turtle 
+from turtle import ScrolledCanvas
 
 (hallLength, hallBreadth, airliftDetails) = sys.argv[1].split(",", 2)
 hallLength = int(hallLength)
@@ -80,6 +82,29 @@ for functionalSpaceIndex in range(1, numberOfAtomicFunctionalSpaces + 1):
    
 print(adjacencyList)
 
+# turtle.home()
+# turtle.begin_poly()
+# turtle.fd(100)
+# turtle.left(20)
+# turtle.fd(30)
+# turtle.left(60)
+# turtle.fd(50)
+# turtle.end_poly()
+
+#t = turtle.TurtleScreen()
+#turtleScreen = turtle.Screen(turtle.ScrolledCanvas())
+turtleScreen = turtle.Screen()
+
+s = turtleScreen.Shape("compound")
+poly1 = ((0,0),(10,-5),(0,10),(-10,-5))
+s.addcomponent(poly1, "red", "blue")
+poly2 = ((0,0),(10,-5),(-10,-5))
+s.addcomponent(poly2, "blue", "red")
+
+turtleScreen.register_shape("myshape", s)
+#turtle.Turtle.shape("myshape")
+
+exit(0)
 ##########################################################################
 ##########################################################################
 def dfs(graph, start, maxdegree, finalListOfFunctionalSpaces, path=None):
@@ -113,7 +138,7 @@ finalListOfFunctionalSpaces = []
 for i in range(1, numberOfAtomicFunctionalSpaces + 1):
         dfs(adjacencyList, i, numberOfAtomicFunctionalSpaces, finalListOfFunctionalSpaces)
 
-#print(finalListOfFunctionalSpaces)
+# print(finalListOfFunctionalSpaces)
 
 '''
 count = 0
@@ -128,7 +153,7 @@ print(count)
 functionalSpaceAreas = {}
 # FS functionalSpaceNumber comprises of atomic FS's listed in blocksList
 for (functionalSpaceNumber, blocksList) in enumerate(finalListOfFunctionalSpaces):
-    #print(blocksList)
+    # print(blocksList)
     functionalSpaceAreas[functionalSpaceNumber] = sum(atomicFunctionalSpaceArea[x] for x in blocksList)
    
 # print(functionalSpaceAreas)
